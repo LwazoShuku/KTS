@@ -4,30 +4,35 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<body>
+    <div class="container body-content">
+        <h2>Product Types</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(a => a.productTy)
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(a => a.productTy)
 
-        </th>
-    </tr>
+                </th>
+            </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(m => item.productTy)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.productTy }) |
-            @Html.ActionLink("Details", "Details", new { id=item.productTy }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.productTy })
-        </td>
-    </tr>
-}
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(m => item.productTy)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.productTy }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.productTy }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.productTy })
+                    </td>
+                </tr>
+            }
 
-</table>
+        </table>
+    </div>
+</body>
