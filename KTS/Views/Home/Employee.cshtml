@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Admin";
+}
+<head>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+</head>
+<body >
+    <div class="container body-content">
+
+        <div class="align-content-center">
+            <h2>Administrator and Employee Use</h2>
+            <i class='fas fa-lightbulb' style='font-size:24px;color:yellow'></i>
+            @Html.ActionLink("Create a new Product Type", "Create", "ProductTypes")
+
+            <br />
+            <br />
+
+            <i class='fas fa-tag' style='font-size:24px;color:red'></i>
+            @Html.ActionLink("Create a Procduct ", "Create", "Products")
+            <br />
+            <br />
+            <i class='fas fa-user-tie' style='font-size:24px'></i>
+            @Html.ActionLink("Add A new Employee ", "Create", "Employees1")
+            <br />
+            <br />
+            <i class='fas fa-file-alt' style='font-size:24px;color:green'></i>
+            @Html.ActionLink("Add A new Employee Contract ", "Create", "Contracts")
+            <br />
+            <br />
+            <i class='fas fa-file-alt' style='font-size:24px;color:green'></i>
+            @Html.ActionLink("Add A new Supplier ", "Create", "Suppliers")
+            <br />
+            <br />
+
+            <i class='fas fa-file-alt' style='font-size:24px;color:green'></i>
+            @Html.ActionLink("Add A new Brand ", "Create", "Brands")
+        </div>
+    </div>
+
+</body> 

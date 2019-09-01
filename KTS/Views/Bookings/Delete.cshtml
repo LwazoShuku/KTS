@@ -1,0 +1,69 @@
+﻿@model KTS.Models.Booking
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<body>
+    <div class="container body-content">
+        <h2>Delete</h2>
+
+        <h3>Are you sure you want to delete this?</h3>
+        <div>
+            <h4>Booking</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.dateTime)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.dateTime)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.time)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.time)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Surname)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Surname)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.vehicle_Registration)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.vehicle_Registration)
+                </dd>
+
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-default" /> |
+                    @Html.ActionLink("Back to List", "Index")
+                </div>
+            }
+        </div>
+    </div>
+</body>

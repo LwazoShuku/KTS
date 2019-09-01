@@ -1,0 +1,87 @@
+﻿@model IEnumerable<KTS.Models.Products>
+
+
+
+
+@{
+    ViewBag.Title = "ProductsRe";
+}
+
+@*<head>
+    <link href="~/Content/Style.css" rel="stylesheet" />
+</head>
+
+<h2>Products</h2>*@
+
+
+<body>
+
+    <div class="container body-content">
+
+
+        @using (Html.BeginForm())
+        {
+            <p>
+
+
+                @Html.Label("Search")
+                @Html.TextBox("s")
+
+                <input type="submit" value="Search" />
+            </p>
+
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.GetBrands.brandName)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProductName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProductDescription)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Price)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.StockAmt)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.GetBrands.brandName)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProductName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProductDescription)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Price)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StockAmt)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Add To Cart", "OrderingItem", "Cart", new { id = item.ProductId }, null) |
+
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        }
+
+    </div>
+
+    
+
+</body>

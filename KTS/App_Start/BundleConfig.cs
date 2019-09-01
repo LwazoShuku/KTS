@@ -24,7 +24,7 @@ namespace KTS
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/bootstrap-3-lumen.css",
                       "~/Content/site.css"));
         }
     }

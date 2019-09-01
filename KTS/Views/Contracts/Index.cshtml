@@ -1,0 +1,77 @@
+﻿@model IEnumerable<KTS.Models.Contract>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee.EName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContractType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContractDesc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RPH)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContractStart)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.status)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.EName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContractType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContractDesc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RPH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContractStart)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.status)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.ContractID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.ContractID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.ContractID })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

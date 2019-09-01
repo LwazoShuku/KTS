@@ -1,0 +1,69 @@
+﻿@using KTS.Models
+@{
+    ViewBag.Title = "Shopping Cart";
+}
+
+<body>
+    <div class="container body-content">
+        <h2>Shopping Cart</h2>
+        @{ 
+            if (Session["Cart"] != null)
+            { 
+                using (Html.BeginForm("UpdateCart", "cart", FormMethod.Post))
+                {
+                    <div class="container body-table"></div>
+                        <table border="1">
+                            <tr>
+                                <th>Product Name</th>
+                                <th>Product Description</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Sub Total</th>
+                            </tr>
+
+                            @foreach (var cart in (List<Cart>)Session["Cart"])
+                            {
+
+                                <tr>
+
+
+                                    <td>@cart.Products.ProductName</td>
+                                    <td>@cart.Products.ProductDescription</td>
+                                    <td>@cart.Products.Price</td>
+                            
+                                    <td>
+                                        <input type="text" name="quantity" id="quantity" value="@cart.Quantity" /> &nbsp;<span id="errmsg"></span>
+                                    </td>
+                            
+                                    <td>@(String.Format("{0:N0}", cart.Products.Price * cart.Quantity))</td>
+                            
+                                    <td>
+                                        @Html.ActionLink("Delete Item", "DeleteCartItem", "Cart", new { id = cart.Products.ProductId }, new { onclick = "Return Confirm{'Are you sure you want to delete this item'};" })
+                                    </td>
+
+                                </tr>
+
+
+
+                             }
+
+                
+            
+
+
+                        </table>
+                    }
+                }
+            }
+
+            <input type="submit" value="Update cart" class="btn" />
+            <br />
+            @Html.ActionLink("Continue Shopping ", "ProductsRe", "Home") 
+            <br />
+
+            @Html.ActionLink("Checkout", "Checkout", "Cart")
+
+            
+        
+    </div>
+</body>

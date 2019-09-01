@@ -1,0 +1,69 @@
+﻿@using KTS.Models
+@{
+    /**/
+
+    ViewBag.Title = "Index";
+}
+
+<body>
+    <div class="container body-content">
+
+        <h2>Shopping Cart</h2>
+
+        <table border="1">
+
+
+            <tr>
+
+                <th>Product Name</th>
+                <th>Product Description</th>
+                <th>Price</th>
+
+                <th>Sub Total</th>
+            </tr>
+
+            @foreach (var cart in (List<Cart>)Session["Cart"])
+            {
+
+                <tr>
+
+
+                    <td>@cart.Products.ProductName</td>
+                    <td>@cart.Products.ProductDescription</td>
+                    <td>@cart.Products.Price</td>
+
+                    <td>@(String.Format("{0:N0}", cart.Products.Price * cart.Quantity))</td>
+
+
+                </tr>
+
+
+
+            }
+
+
+
+
+        </table>
+
+
+        @using (Html.BeginForm("Checkout", "Cart", FormMethod.Post))
+        {
+
+
+        }
+
+
+
+
+
+
+
+        <h1> @ViewBag.Total </h1>
+        <br />
+
+        @Html.ActionLink("Pay with PayPal", "PaymentWithPaypal", "Cart")
+
+
+    </div>
+</body>

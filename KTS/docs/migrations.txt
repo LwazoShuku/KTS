@@ -1,0 +1,7 @@
+﻿Enable-Migrations -ContextTypeName KtsContext -MigrationsDirectory Migrations\KtsStore
+
+
+add-migration -ConfigurationTypeName  KTS.Migrations.KtsStore.Configuration "IntialCreate"
+
+
+

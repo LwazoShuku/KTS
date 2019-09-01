@@ -1,31 +1,255 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "KTS Tyres";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
+
+<body>
+
+
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                @*<img src="ny.jpg" alt="Tyres" width="1200" height="700">*@
+                @*<img src="~/Content/pics/Rims.jpg" style="width:100%;height:500px;" />*@
+                <img src="~/Content/pics/Rims.jpg" class="img-responsive" style="width:100%" />
+
+                <div class="carousel-caption">
+                    <h3>Tyres</h3>
+                    <p>Pick and choose from our extensive collection of quality tyres.</p>
+                </div>
+            </div>
+
+            <div class="item">
+                @*<img src="chicago.jpg" alt="Services" width="1200" height="700">*@
+                @*<img src="~/Content/pics/automobile-number-odometer-248747.jpg" style="width:100%;height:500px;" />*@
+                <img src="~/Content/pics/auto-automobile-automotive-919073.jpg" class="img-responsive" style="width:100%" />
+
+                <div class="carousel-caption">
+                    <h3>Services</h3>
+                    <p>We offer a range of motor vehicular services to fit your needs</p>
+                </div>
+            </div>
+
+            <div class="item">
+                @*<img src="la.jpg" alt="Rims" width="1200" height="700">*@
+                <img src="~/Content/pics/car-pic - carousel.jpg" class="img-responsive" style="width:100%" />
+                <div class="carousel-caption">
+                    <h3>Rims</h3>
+                    <p>Even though traffic is a mess, we'll make sure you look stunning in it with our choice selection of rims.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+    <!-- Container (The Main Section) -->
+    <div class="container text-center">
+        <h3>KTS Tyres</h3>
+        <p><em>Service With A Smile</em></p>
+        <p class="col-md-3"></p>
+        <p class="col-md-6">
+            Welcome to <em>KwaZulu Tyre Services</em>. We are a leading provider of quality tyres
+            and a multitude of motor vehilcular services such
+            wheel alignment and vulcanizing.
         </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        <p class="col-md-3"></p>
+        <br /><br />
+
+        <div class="row text-center">
+            <a href="http://localhost:9152/Home/Tyres">
+                <div class="col-sm-4">
+                    <div class="thumbnail" style="background-color:#2d2d30;">
+                        @*<img src="paris.jpg" alt="Paris" width="400" height="300">*@
+                        <img src="~/Content/pics/Rims.jpg" style="border-top-right-radius:25px;border-top-left-radius:25px;" />
+                        <p style="color:white;"><strong>Tyres</strong></p>
+                    </div>
+                </div>
+            </a>
+            <a href="http://localhost:9152/Home/Rims">
+                <div class="col-sm-4">
+                    <div class="thumbnail" style="background-color:#2d2d30;">
+                        @*<img src="paris.jpg" alt="Paris" width="400" height="300">*@
+                        <img src="~/Content/pics/Rims.jpg" style="border-top-right-radius:25px;border-top-left-radius:25px;" />
+                        <p style="color:white;"><strong>Rims</strong></p>
+                    </div>
+                </div>
+            </a>
+            <a href="http://localhost:9152/Home/Lugs">
+                <div class="col-sm-4">
+                    <div class="thumbnail" style="background-color:#2d2d30;">
+                        @*<img src="paris.jpg" alt="Paris" width="400" height="300">*@
+                        <img src="~/Content/pics/Rims.jpg" style="border-top-right-radius:25px;border-top-left-radius:25px;" />
+                        <p style="color:white;"><strong>Accessories</strong></p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="row text-center">
+            <a href="http://localhost:9152/Home/V">
+                <div class="col-sm-4">
+                    <div class="thumbnail" style="background-color:#2d2d30;">
+                        @*<img src="paris.jpg" alt="Paris" width="400" height="300">*@
+                        <img src="~/Content/pics/Rims.jpg" style="border-top-right-radius:25px;border-top-left-radius:25px;" />
+                        <p style="color:white;"><strong>Vulcanizing</strong></p>
+                    </div>
+                </div>
+            </a>
+            <a href="http://localhost:9152/Home/W">
+                <div class="col-sm-4">
+                    <div class="thumbnail" style="background-color:#2d2d30;">
+                        @*<img src="paris.jpg" alt="Paris" width="400" height="300">*@
+                        <img src="~/Content/pics/Rims.jpg" style="border-top-right-radius:25px;border-top-left-radius:25px;" />
+                        <p style="color:white;"><strong>Wheel Alignment</strong></p>
+                    </div>
+                </div>
+            </a>
+            <a href="http://localhost:9152/Home/B">
+                <div class="col-sm-4">
+                    <div class="thumbnail" style="background-color:#2d2d30;">
+                        @*<img src="paris.jpg" alt="Paris" width="400" height="300">*@
+                        <img src="~/Content/pics/Rims.jpg" style="border-top-right-radius:25px;border-top-left-radius:25px;" />
+                        <p style="color:white;"><strong>Balancing & Fitting</strong></p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+
+    <!-- Container (Specials Section) -->
+    <div class="bg-1">
+        <div class="container">
+            <h3 class="text-center">SPECIALS</h3>
+            <p class="text-center">
+                Have a browse of some of the specials we currently have on offer.<br>
+                Hopefully you'll find just what you need at a reduced price.
+            </p>
+            <br />
+
+
+            <div class="row text-center">
+                <div class="col-sm-4">
+                    <div class="thumbnail">
+                        @*<img src="paris.jpg" alt="Paris" width="400" height="300">*@
+                        <img src="~/Content/pics/Rims.jpg" style="border-top-right-radius:25px;border-top-left-radius:25px;" />
+                        <p><strong>BBS Rims</strong></p>
+                        <p>20% Off Selected BBS Rims</p>
+                        <button class="btn" data-toggle="modal" data-target="#myModal">Buy</button>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="thumbnail">
+                        @*<img src="newyork.jpg" alt="New York" width="400" height="300">*@
+                        <img src="~/Content/pics/Rims.jpg" style="border-top-right-radius:25px;border-top-left-radius:25px;" />
+                        <p><strong>Goodyear Tyres</strong></p>
+                        <p>15% Off Select Goodyear Tyres</p>
+                        <button class="btn" data-toggle="modal" data-target="#myModal">Buy</button>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="thumbnail">
+                        @*<img src="sanfran.jpg" alt="San Francisco" width="400" height="300">*@
+                        <img src="~/Content/pics/Rims.jpg" style="border-top-right-radius:25px;border-top-left-radius:25px;" />
+                        <p><strong>Wheel Alignment</strong></p>
+                        <p>30% Off Wheel Alignment</p>
+                        <button class="btn" data-toggle="modal" data-target="#myModal">Buy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4><span class="glyphicon glyphicon-lock"></span> Special</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form role="form">
+                            <div class="form-group">
+                                <label for="psw"><span class="glyphicon glyphicon-shopping-cart"></span> Was : <del>R2000</del> | Now : R1600 per tyre</label>
+                                <input type="number" class="form-control" id="psw" placeholder="How many?">
+                            </div>
+
+                            @*<div class="form-group">
+                                    <label for="usrname"><span class="glyphicon glyphicon-user"></span> Send To</label>
+                                    <input type="text" class="form-control" id="usrname" placeholder="Enter email">
+                                </div>*@
+
+                            <button type="submit" class="btn btn-block">
+                                Add To Cart
+                                <span class="glyphicon glyphicon-ok"></span>
+                            </button>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
+                            <span class="glyphicon glyphicon-remove"></span> Cancel
+                        </button>
+                        @*<p>Need <a href="#">help?</a></p>*@
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+
+
+    <img src="~/Content/pics/Rims.jpg" class="img-responsive" style="width:100%" />
+
+
+    <script>
+        $(document).ready(function () {
+            // Initialize Tooltip
+            $('[data-toggle="tooltip"]').tooltip();
+
+            // Add smooth scrolling to all links in navbar + footer link
+            $(".navbar a, footer a[href='#myPage']").on('click', function (event) {
+
+                // Make sure this.hash has a value before overriding default behavior
+                if (this.hash !== "") {
+
+                    // Prevent default anchor click behavior
+                    event.preventDefault();
+
+                    // Store hash
+                    var hash = this.hash;
+
+                    // Using jQuery's animate() method to add smooth page scroll
+                    // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top
+                    }, 900, function () {
+
+                        // Add hash (#) to URL when done scrolling (default click behavior)
+                        window.location.hash = hash;
+                    });
+                } // End if
+            });
+        })
+    </script>
+
+</body>
+
