@@ -39,6 +39,7 @@ namespace KTS.Controllers
         // GET: Bookings/Create
         public ActionResult Create()
         {
+          
             return View();
         }
 
@@ -47,8 +48,9 @@ namespace KTS.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "bookingID,dateTime,time,Name,Surname,vehicle_Registration")] Booking booking)
+        public ActionResult Create([Bind(Include = "bookingID,sessionUser,dateTime,time,Name,Surname,vehicle_Registration")] Booking booking)
         {
+            booking.sessionUser= Session.SessionID.ToString();
             if (ModelState.IsValid)
             {
                 db.bookings.Add(booking);

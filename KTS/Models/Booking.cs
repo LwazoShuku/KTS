@@ -15,6 +15,8 @@ namespace KTS.Models
         public int bookingID { get; set; }
 
 
+        
+        public string sessionUser {get;set;}
 
 
 
