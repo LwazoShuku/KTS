@@ -33,9 +33,7 @@ namespace KTS.Models
         [Display(Name = "Qty")]
         public int StockAmt { get; set; }
 
-        [Required(ErrorMessage = "Enter the type of item this is e.g Service/Product")]
-        [Display(Name = "Item Type")]
-        public string ItemType { get; set; } // We could set this to a default value of Product
+
 
         public string brandID { get; set; }
 
@@ -46,9 +44,8 @@ namespace KTS.Models
 
         public Supplier supplier { get; set; }
 
-        public List<Cart> GetCarts { get; set; }
-
-        public virtual ICollection<Cart> Carts { get; set; }
+        
+       
     }
  
 

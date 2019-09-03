@@ -3,16 +3,16 @@ namespace KTS.Migrations.KtsStore
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class IntialCreate1 : DbMigration
+    public partial class IntialCreate : DbMigration
     {
         public override void Up()
         {
-            AddColumn("dbo.Bookings", "sessionUser", c => c.String());
+            DropColumn("dbo.Products", "ItemType");
         }
         
         public override void Down()
         {
-            DropColumn("dbo.Bookings", "sessionUser");
+            AddColumn("dbo.Products", "ItemType", c => c.String(nullable: false));
         }
     }
 }

@@ -58,7 +58,7 @@ namespace KTS.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.productTy = new SelectList(db.Ptype, "productTy", "productTy", brands.ProductId);
+            ViewBag.productTy = new SelectList(db.Ptype, "productTy", "productTy", brands.productTy);
             return View(brands);
         }
 
@@ -74,7 +74,7 @@ namespace KTS.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.productTy = new SelectList(db.Ptype, "productTy", "productTy", brands.ProductId);
+            ViewBag.productTy = new SelectList(db.Ptype, "productTy", "productTy", brands.productTy);
             return View(brands);
         }
 
@@ -91,7 +91,7 @@ namespace KTS.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.productTy = new SelectList(db.Ptype, "productTy", "productTy", brands.ProductId);
+            ViewBag.productTy = new SelectList(db.Ptype, "productTy", "productTy", brands.productTy);
             return View(brands);
         }
 

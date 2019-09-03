@@ -23,7 +23,7 @@ namespace KTS.Models
 
 
 
-        public int ProductId { get; set; }
+        public string productTy { get; set; }
         public ProductType type { get; set; }
 
         public List<Products> GetProducts { get; set; }

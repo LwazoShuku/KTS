@@ -5,6 +5,7 @@ using System.Web;
 using System.Data;
 using System.Data.Entity;
 using KTS.Models;
+using KTS.Migrations.KtsStore;
 
 
 namespace KTS.data
@@ -13,18 +14,16 @@ namespace KTS.data
     {
         public ktsContext() : base("name=KTS")
         {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ktsContext, KTS.Migrations.KtsStore.Configuration>());
 
-
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ktsContext, Migrations.KtsStore.Configuration>());
         }
 
         public DbSet<ProductType> Ptype { get; set; }
 
         public DbSet<Products> product { get; set; }
 
-        public DbSet<Contract> contracts { get; set; }
 
-        public DbSet<Employee> Emp { get; set; }
+       
 
         public DbSet<Brands> PBrands { get; set; }
 

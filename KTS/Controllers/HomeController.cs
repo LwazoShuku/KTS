@@ -76,7 +76,7 @@ namespace KTS.Controllers
         {
 
             
-            var tyre = db.product.Include(p => p.GetBrands).Where(p => p.GetBrands.ProductId.ToString() == "Tyres").ToList();
+            var tyre = db.product.Include(p => p.GetBrands).Where(p => p.GetBrands.productTy.ToString() == "Tyres").ToList();
 
             return View("ProductsRe", tyre);
 
@@ -94,7 +94,7 @@ namespace KTS.Controllers
 
            
 
-                var r = db.product.Include(i => i.GetBrands).Where(p => p.GetBrands.ProductId.ToString() == "Rims").ToList();
+                var r = db.product.Include(i => i.GetBrands).Where(p => p.GetBrands.productTy.ToString() == "Rims").ToList();
               return View("ProductsRe", r);
 
         }
@@ -105,7 +105,7 @@ namespace KTS.Controllers
           
 
 
-            var Lug = db.product.Include(i => i.GetBrands).Where(p => p.GetBrands.ProductId.ToString() == "Accessories").ToList();
+            var Lug = db.product.Include(i => i.GetBrands).Where(p => p.GetBrands.productTy.ToString() == "Accessories").ToList();
 
             return View("ProductsRe", Lug);
 

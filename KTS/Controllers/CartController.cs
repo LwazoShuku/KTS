@@ -12,14 +12,15 @@ using Postal;
 using Microsoft.AspNet.Identity;
 using System.Net.Mail;
 using System.Text;
-using Postal;
+
 using PayPal.Api;
 
 using PayPal.Log;
 using log4net.Repository.Hierarchy;
 
 namespace KTS.Controllers
-{    [Authorize]
+{
+    [Authorize]
     public class CartController : Controller
     {
         private ktsContext db = new ktsContext();
@@ -175,29 +176,6 @@ namespace KTS.Controllers
         }
 
  
-        [HttpPost]
-        public ActionResult Checkout(Cart ca)
-        {
-            
-            string ship = Request.Form["Shipping"].ToString();
-            if (ca.shipping == "Shipping")
-            {
-                shippingCharge = "5";
-                return RedirectToAction("PaymentWithPaypal");
-            }
-
-            else
-            {
-
-                shippingCharge = "0";
-                return RedirectToAction("PaymentWithPaypal");
-                
-
-            }
-
-
-        }
-
        
 
         public ActionResult UpdateCart(FormCollection frc)
