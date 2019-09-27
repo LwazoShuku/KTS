@@ -2,8 +2,11 @@
 @{
     ViewBag.Title = "BookingExist";
 }
-<br />
-<br />
-<h2>BookingExist</h2>
 
-@Html.ActionLink("Book Again","Create","Bookings")
+<div class="container body-content">
+    <h2>Sorry, a Booking already exists for this time. <br />
+    Try making a different booking.
+    </h2>
+
+    @Html.ActionLink("Book Again", "Create", "Bookings")
+</div>

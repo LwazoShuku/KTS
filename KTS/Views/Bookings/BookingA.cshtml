@@ -2,9 +2,13 @@
 @{
     ViewBag.Title = "BookingA";
 }
-<br />
-<br />
 
-<h2>Cannot Book on the same day or before todays date</h2>
+<div class="container body-content">
+   
+    <h2>You may not make a booking for today or any days before today. 
+    <br>
+    Try making a booking from tomorrow's date onwards.
+    </h2>
 
-@Html.ActionLink("Book Again","Create","Bookings")
+    @Html.ActionLink("Book Again", "Create", "Bookings")
+</div>
