@@ -18,6 +18,7 @@ namespace KTS.Controllers
         // GET: Bookings
         public ActionResult Index()
         {
+            ViewBag.day = System.DateTime.Now.ToString("dddd");
             var bookings = db.bookings.Include(b => b.GetServices);
             return View(bookings.ToList());
         }
@@ -41,6 +42,7 @@ namespace KTS.Controllers
         [Authorize]
         public ActionResult Create()
         {
+         
             ViewBag.Serviceid = new SelectList(db.services, "Serviceid", "Serviceid");
             return View();
         }
@@ -65,7 +67,11 @@ namespace KTS.Controllers
             {
                 return View("BookingA");
             }
-
+            
+            else if (booking.dateT.Date.DayOfWeek.ToString() =="Sunday")
+            {
+                return View("BookingA");
+            }
             else if (i == 1)
             {
 
@@ -89,13 +95,14 @@ namespace KTS.Controllers
         }
 
         // GET: Bookings/Edit/5
-        public ActionResult Edit(string id)
-        {
+        public ActionResult Edit(string id,string dat)
+        {  
+           
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Booking booking = db.bookings.Find(id);
+            Booking booking = db.bookings.Find(id,dat);
             if (booking == null)
             {
                 return HttpNotFound();
