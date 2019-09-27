@@ -25,14 +25,20 @@ namespace KTS.Controllers
     {
         private ktsContext db = new ktsContext();
         private string strCart = "Cart";
-        private string shippingCharge;
+        private string shippingC;
 
         // GET: Cart
         public ActionResult Index()
         {
+
+
+            
+
+
             return View();
         }
 
+     
 
 
         // GET: Cart
@@ -43,7 +49,7 @@ namespace KTS.Controllers
 
             email.To = "samir77@outlook.com";
             email.Subject = "You have a new order";
-            email.Message = "Please check you PayPal Business Account user:"+Session.SessionID.ToString()+" has placed an order";
+            email.Message = "Please check you PayPal Business Account user:"+ this.HttpContext.User.Identity.Name + " has placed an order";
 
             email.Send();
             return View();
@@ -65,7 +71,7 @@ namespace KTS.Controllers
 
                 List<Cart> lst = new List<Cart>
                 {
-                    new Cart (db.product.Find(id),1)
+                    new Cart (db.InventoryT.Find(id),1)
 
                
              
@@ -91,7 +97,7 @@ namespace KTS.Controllers
              
                     
 
-                    lst.Add(new Cart(db.product.Find(id), 1));
+                    lst.Add(new Cart(db.InventoryT.Find(id), 1));
                     
 
                    
@@ -102,7 +108,7 @@ namespace KTS.Controllers
                 {
                     lst[check].Quantity++;
 
-                    int q = db.product.Find(id).StockAmt - 1;
+                    int q = db.InventoryT.Find(id).StockAmt - 1;
                   
                     db.SaveChanges();
 
@@ -127,7 +133,7 @@ namespace KTS.Controllers
             for (int i = 0; i < lst.Count; i++)
             {
 
-                if (lst[i].Products.ProductId == id) return i;
+                if (lst[i].Inv.inventoryid == id) return i;
 
 
             }
@@ -150,7 +156,7 @@ namespace KTS.Controllers
 
             lst.RemoveAt(check);
 
-            int q = db.product.Find(id).StockAmt +1;
+            int q = db.InventoryT.Find(id).StockAmt +1;
             db.SaveChanges();
             return View("Index");
 
@@ -162,7 +168,7 @@ namespace KTS.Controllers
             foreach (var cart in (List<Cart>)Session["Cart"])
             {
 
-                Total = (cart.Products.Price * cart.Quantity) + Total;
+                Total = (cart.Inv.Price * cart.Quantity) + Total;
             }
             List<SelectListItem> items = new List<SelectListItem>();
 
@@ -175,15 +181,32 @@ namespace KTS.Controllers
             return View("Checkout");
         }
 
- 
+        
        
-
+        [HttpPost]
         public ActionResult UpdateCart(FormCollection frc)
         {
             string[] quantities = frc.GetValues("Quantity");
 
             List<Cart> lst = (List<Cart>)Session[strCart];
 
+         
+           string ship = frc.Get("shipping");
+
+            if (ship == "Shipping")
+            {
+                foreach (var cart in (List<Cart>)Session["Cart"])
+                {
+
+                    shippingC = (5 + (cart.Quantity * 30)).ToString();
+                }
+            }
+
+            else
+            {
+                shippingC = "0";
+            }
+          
             for (int i = 0; i < lst.Count(); i++)
             {
 
@@ -210,9 +233,9 @@ namespace KTS.Controllers
                 {
 
 
-                    name = cart.Products.ProductName,
+                    name = cart.Inv.ProductModelName,
                     currency = "USD",
-                    price = cart.Products.Price.ToString(),
+                    price = cart.Inv.Price.ToString(),
                     quantity = cart.Quantity.ToString(),
                     sku = "sku",
 
@@ -241,8 +264,8 @@ namespace KTS.Controllers
             var details = new Details()
             {
                 tax = "1",
-                shipping = shippingCharge,
-                subtotal = listCarts.Sum(x => x.Quantity * x.Products.Price).ToString()
+                shipping = shippingC,
+                subtotal = listCarts.Sum(x => x.Quantity * x.Inv.Price).ToString()
             };
 
             // create amount object
@@ -286,11 +309,14 @@ namespace KTS.Controllers
         }
 
 
-
+        
         public ActionResult PaymentWithPaypal()
         {
+
+               
+
             //getting the apiContext as earlier
-            APIContext apiContext = Configuration.GetAPIContext();
+            APIContext apiContext = Configurations.GetAPIContext();
 
             
                 string payerId = Request.Params["PayerID"];

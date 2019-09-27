@@ -6,7 +6,7 @@ using PayPal.Api;
 
 namespace KTS.Models
 {
-    public class Configuration
+    public class Configurations
     {
        
         //these variables will store the clientID and clientSecret
@@ -14,7 +14,7 @@ namespace KTS.Models
         public readonly static string ClientId;
         public readonly static string ClientSecret;
 
-        static Configuration()
+        static Configurations()
         {
             var config = GetConfig();
             ClientId = config["clientId"];

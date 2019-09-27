@@ -28,11 +28,11 @@
                 <tr>
 
 
-                    <td>@cart.Products.ProductName</td>
-                    <td>@cart.Products.ProductDescription</td>
-                    <td>@cart.Products.Price</td>
+                    <td></td>
+                    <td>@cart.Inv.ProductDescription</td>
+                    <td>@cart.Inv.Price</td>
 
-                    <td>@(String.Format("{0:N0}", cart.Products.Price * cart.Quantity))</td>
+                    <td>@(String.Format("{0:N0}", cart.Inv.Price * cart.Quantity))</td>
 
 
                 </tr>
@@ -46,24 +46,30 @@
 
         </table>
 
-
-        @using (Html.BeginForm("Checkout", "Cart", FormMethod.Post))
-        {
-
-
-        }
-
-
-
-
-
-
-
-        <h1> @ViewBag.Total </h1>
-        <br />
-
-        @Html.ActionLink("Pay with PayPal", "PaymentWithPaypal", "Cart", new { target = "_blank" })
+        <div class="form-horizontal">
+            <hr />
+            @model Cart
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group ">
+                @Html.LabelFor(m => m.shipping, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10 ">
+                  
+                </div>
+            </div>
+          
 
 
-    </div>
+
+
+
+
+
+            <h1> @ViewBag.Total </h1>
+            <br />
+
+            @Html.ActionLink("Pay with PayPal", "PaymentWithPaypal", "Cart", new { target = "_blank" })
+
+
+        </div>
+   </div>
 </body>

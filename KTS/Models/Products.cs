@@ -18,20 +18,12 @@ namespace KTS.Models
 
 
         [Required(ErrorMessage = "Enter the name of the product")]
-        [Display(Name = "Product Name")]
+        [Display(Name = "Product Code")]
         public string ProductName { get; set; }
 
-        [Required(ErrorMessage = "Enter product details e.g specs")]
-        [Display(Name = "Product Description ")]
-        public string ProductDescription { get; set; }
-
-        [Required(ErrorMessage = "enter the price e.g   R123.55")]
-        [Display(Name = "Price")]
-        public double Price { get; set; }
-
-        [Required(ErrorMessage = "Enter the amount of the product in stock")]
-        [Display(Name = "Qty")]
-        public int StockAmt { get; set; }
+   
+        public List<Inventory> inventories { get; set; }
+      
 
 
 

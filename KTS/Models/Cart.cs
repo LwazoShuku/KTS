@@ -13,22 +13,30 @@ namespace KTS.Models
     public class Cart
     {
     
-        public int id { get; set; }
+   
 
         public int Quantity { get; set; }
 
-        public Products Products { get; set; }
+        public Inventory Inv { get; set; }
 
+        public string shipping { get; set; }
+
+        public string selectedtext { get; set; }
        
-        public Cart(Products products, int quantity)
+        public Cart(Inventory inventory, int quantity)
         {
-            Products = products;
+            Inv= inventory;
             Quantity = quantity;
-
+        
         }
 
 
 
+        public string ship()
+        {
+
+            return selectedtext;
+        }
     }
 
 }

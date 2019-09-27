@@ -18,11 +18,12 @@ namespace KTS.Controllers
         // GET: Bookings
         public ActionResult Index()
         {
-            return View(db.bookings.ToList());
+            var bookings = db.bookings.Include(b => b.GetServices);
+            return View(bookings.ToList());
         }
 
         // GET: Bookings/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(string id)
         {
             if (id == null)
             {
@@ -37,9 +38,10 @@ namespace KTS.Controllers
         }
 
         // GET: Bookings/Create
+        [Authorize]
         public ActionResult Create()
         {
-          
+            ViewBag.Serviceid = new SelectList(db.services, "Serviceid", "Serviceid");
             return View();
         }
 
@@ -48,21 +50,46 @@ namespace KTS.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "bookingID,sessionUser,dateTime,time,Name,Surname,vehicle_Registration")] Booking booking)
+        public ActionResult Create([Bind(Include = "dateT,time,sessionUser,Serviceid,Name,Surname,vehicle_Registration")] Booking booking)
         {
-            booking.sessionUser= Session.SessionID.ToString();
-            if (ModelState.IsValid)
+            int i = db.bookings.Where(p => p.dateT == booking.dateT && p.time == booking.time && p.Serviceid == booking.Serviceid).Count();
+            int w = -db.bookings.Where(p => p.dateT == booking.dateT && p.time == booking.time && p.sessionUser == booking.sessionUser).Count();
+            if (i == 2)
             {
-                db.bookings.Add(booking);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+
+
+                return View("BookingExist");
+
+            }
+            else if (booking.dateT <= DateTime.Now)
+            {
+                return View("BookingA");
             }
 
+            else if (i == 1)
+            {
+
+
+                return View("BookingExist");
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    booking.sessionUser = this.HttpContext.User.Identity.Name;
+                    db.bookings.Add(booking);
+                    db.SaveChanges();
+                    return View("Success");
+                }
+            }
+
+          
+            ViewBag.Serviceid = new SelectList(db.services, "Serviceid", "Serviceid", booking.Serviceid);
             return View(booking);
         }
 
         // GET: Bookings/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(string id)
         {
             if (id == null)
             {
@@ -73,6 +100,7 @@ namespace KTS.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Serviceid = new SelectList(db.services, "Serviceid", "Serviceid", booking.Serviceid);
             return View(booking);
         }
 
@@ -81,7 +109,7 @@ namespace KTS.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "bookingID,dateTime,time,Name,Surname,vehicle_Registration")] Booking booking)
+        public ActionResult Edit([Bind(Include = "dateT,time,sessionUser,Serviceid,Name,Surname,vehicle_Registration")] Booking booking)
         {
             if (ModelState.IsValid)
             {
@@ -89,11 +117,12 @@ namespace KTS.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.Serviceid = new SelectList(db.services, "Serviceid", "Serviceid", booking.Serviceid);
             return View(booking);
         }
 
         // GET: Bookings/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(string id)
         {
             if (id == null)
             {
@@ -110,7 +139,7 @@ namespace KTS.Controllers
         // POST: Bookings/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(string id)
         {
             Booking booking = db.bookings.Find(id);
             db.bookings.Remove(booking);

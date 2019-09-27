@@ -13,7 +13,7 @@ namespace KTS.Migrations.KtsStore
         
         string IMigrationMetadata.Id
         {
-            get { return "201909031846112_IntialCreate"; }
+            get { return "201909260825027_IntialCreate"; }
         }
         
         string IMigrationMetadata.Source

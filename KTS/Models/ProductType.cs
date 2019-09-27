@@ -16,7 +16,7 @@ namespace KTS.Models
         [Display(Name = "Product Type e.g Tyre")]
         public string productTy { get; set; }
 
-      
+      public List<Services> service { get; set; }
         
         public List<Brands> brands { get; set; }
 

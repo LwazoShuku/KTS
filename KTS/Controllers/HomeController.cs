@@ -36,11 +36,15 @@ namespace KTS.Controllers
             return View();
         }
 
-        public ActionResult ProductsRe()
+        public ActionResult ProductsRe(string s)
         {
-
-            var product = db.product.Include(p => p.GetBrands);
-            return View(product.ToList());
+            if (s != null)
+            {
+                var i = (from d in db.InventoryT.Include(p => p.GetProducts).Where(y => y.ProductModelName.StartsWith(s)) select d);
+                return View(i);
+            }
+            var inventoryT = (from d in db.InventoryT.Include(i => i.GetProducts) select d);
+            return View(inventoryT.ToList());
 
 
 
@@ -51,32 +55,37 @@ namespace KTS.Controllers
         public ActionResult V()
         {
             // where is this one going?
-            var search = db.product.Include(i => i.GetBrands).Where(p => p.ProductName == "Vulcanizing").ToList();
+            var search = db.services.Where(p => p.Serviceid == "Vulcanizing").ToList();
 
-            return  View("ProductsRe",search);
+            return  View("Service",search);
         }
 
         public ActionResult B()
         {
             // where is this one going?
-            var search = db.product.Include(i => i.GetBrands).Where(p => p.ProductName == "Balancing&Fitting").ToList();
+            var search = db.services.Where(p =>p.Serviceid== "Balancing&Fitting").ToList();
 
-            return View("ProductsRe", search);
+            return View("Service", search);
         }
 
         public ActionResult W()
         {
             // where is this one going?
-            var search = db.product.Include(i => i.GetBrands).Where(p => p.ProductName == "Wheel Alignment").ToList();
+            var search = db.services.Where(p => p.Serviceid == "Wheel Alignment").ToList();
 
-            return View("ProductsRe", search);
+            return View("Service", search);
         }
 
-        public ActionResult Tyres()
+        public ActionResult Tyres(string s)
         {
+            if (s != null)
+            {
+                var t = db.InventoryT.Include(p => p.GetProducts).Where(p => p.GetProducts.GetBrands.productTy.StartsWith(s)).ToList();
 
+                return View("ProductsRe", t);
+            }
             
-            var tyre = db.product.Include(p => p.GetBrands).Where(p => p.GetBrands.productTy.ToString() == "Tyres").ToList();
+            var tyre = db.InventoryT.Include(p => p.GetProducts).Where(p => p.GetProducts.GetBrands.productTy == "Tyres").ToList();
 
             return View("ProductsRe", tyre);
 
@@ -86,26 +95,35 @@ namespace KTS.Controllers
 
 
 
-        public ActionResult Rims()
+        public ActionResult Rims(string s)
         {
-           
+            if (s != null)
+            {
+                var e = db.InventoryT.Include(i => i.GetProducts).Where(p => p.GetProducts.GetBrands.productTy.StartsWith(s)).ToList();
+                return View("ProductsRe", e);
+            }
             
                
 
            
 
-                var r = db.product.Include(i => i.GetBrands).Where(p => p.GetBrands.productTy.ToString() == "Rims").ToList();
+                var r = db.InventoryT.Include(i => i.GetProducts).Where(p => p.GetProducts.GetBrands.productTy == "Rims").ToList();
               return View("ProductsRe", r);
 
         }
 
-        public ActionResult Lugs()
+        public ActionResult Lugs(string s)
         {
 
-          
+            if (s != null)
+            {
+                var L= db.InventoryT.Include(i => i.GetProducts).Where(p => p.GetProducts.GetBrands.productTy.StartsWith(s)).ToList();
+
+                return View("ProductsRe", L);
+            }
 
 
-            var Lug = db.product.Include(i => i.GetBrands).Where(p => p.GetBrands.productTy.ToString() == "Accessories").ToList();
+            var Lug = db.InventoryT.Include(i => i.GetProducts).Where(p => p.GetProducts.GetBrands.productTy == "Accessories").ToList();
 
             return View("ProductsRe", Lug);
 

@@ -50,7 +50,7 @@ namespace KTS.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductId,ProductName,ProductDescription,Price,StockAmt,brandID,suppId")] Products products)
+        public ActionResult Create([Bind(Include = "ProductId,ProductName,brandID,suppId")] Products products)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace KTS.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductId,ProductName,ProductDescription,Price,StockAmt,brandID,suppId")] Products products)
+        public ActionResult Edit([Bind(Include = "ProductId,ProductName,brandID,suppId")] Products products)
         {
             if (ModelState.IsValid)
             {

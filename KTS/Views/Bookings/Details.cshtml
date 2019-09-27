@@ -4,59 +4,47 @@
     ViewBag.Title = "Details";
 }
 
-<body>
-    <div class="container body-content">
-        <h2>Details</h2>
+<h2>Details</h2>
 
-        <div>
-            <h4>Booking</h4>
-            <hr />
-            <dl class="dl-horizontal">
-                <dt>
-                    @Html.DisplayNameFor(model => model.dateTime)
-                </dt>
+<div>
+    <h4>Booking</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GetServices.Serviceid)
+        </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.dateTime)
-                </dd>
+        <dd>
+            @Html.DisplayFor(model => model.GetServices.Serviceid)
+        </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.time)
-                </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.time)
-                </dd>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.Name)
-                </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Surname)
+        </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Name)
-                </dd>
+        <dd>
+            @Html.DisplayFor(model => model.Surname)
+        </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.Surname)
-                </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.vehicle_Registration)
+        </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Surname)
-                </dd>
+        <dd>
+            @Html.DisplayFor(model => model.vehicle_Registration)
+        </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.vehicle_Registration)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.vehicle_Registration)
-                </dd>
-
-            </dl>
-        </div>
-        <p>
-            @Html.ActionLink("Edit", "Edit", new { id = Model.bookingID }) |
-            @Html.ActionLink("Back to List", "Index")
-        </p>
-    </div>
-</body>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

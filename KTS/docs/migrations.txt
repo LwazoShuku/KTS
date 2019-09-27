@@ -5,3 +5,74 @@ add-migration -ConfigurationTypeName  KTS.Migrations.KtsStore.Configuration "Int
 
 
 
+
+
+
+sam@kts20190920124803dbserver
+
+@section scripts{
+
+
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+
+    <script>
+        $(function () {
+            $(".datepicker").datepicker({
+
+                changeYear: true,
+              
+
+
+            });
+            
+                
+            
+        });
+    </script>
+}
+
+  Database.SetInitializer(new MigrateDatabaseToLatestVersion<ktsContext,Configuration>());
+
+
+
+   [Display(Name = "Booking Date")]
+        [Required(ErrorMessage ="Select a date")]
+        public string dateT { get; set; }
+
+
+
+
+
+
+
+		
+                int i = db.bookings.Where(p => p.dateT == booking.dateT && p.time==booking.time && p.service==booking.service).Count();
+              
+                if (i == 2 )
+                {
+                    return View("error");
+
+                }
+
+                else
+                {
+                    booking.sessionUser = this.HttpContext.User.Identity.Name;
+                    db.bookings.Add(booking);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.time, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.time, new List<SelectListItem> { new SelectListItem { Text = "09:00", Value = "09" } ,
+           new SelectListItem{ Text="10:00",Value="10"}, new SelectListItem{ Text="11:00",Value="11"},new SelectListItem{ Text="12:00",Value="12" },
+           new SelectListItem{ Text="13:00",Value="13"},new SelectListItem {Text="14:00",Value="14" }, new SelectListItem{Text="15:00",Value="15" },
+           new SelectListItem{ Text="16:00",Value="16"}
+            }  )
+            @Html.ValidationMessageFor(model => model.time, "", new { @class = "text-danger" })
+        </div>
+    </div>

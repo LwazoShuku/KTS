@@ -1,4 +1,4 @@
-﻿@model IEnumerable<KTS.Models.Products>
+﻿@model IEnumerable<KTS.Models.Inventory>
 
 
 
@@ -33,17 +33,16 @@
             <table class="table">
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.GetBrands.brandName)
-                    </th>
-
-                    <th>
-                        @Html.DisplayNameFor(model => model.ProductName)
+                        @Html.DisplayNameFor(model => model.GetProducts.ProductName)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.ProductDescription)
+                        Product Image
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Price)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProductDescription)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.StockAmt)
@@ -55,29 +54,31 @@
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.GetBrands.brandName)
+                            @Html.DisplayFor(modelItem => item.GetProducts.ProductName)
                         </td>
+                        <td>
 
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ProductName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ProductDescription)
+                            <img src="data:image;base64,@System.Convert.ToBase64String(item.productImage)" width="90" height="90" />
+
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Price)
                         </td>
                         <td>
+                            @Html.DisplayFor(modelItem => item.ProductDescription)
+                        </td>
+                        <td>
                             @Html.DisplayFor(modelItem => item.StockAmt)
                         </td>
                         <td>
-                            @Html.ActionLink("Add To Cart", "OrderingItem", "Cart", new { id = item.ProductId }, null) |
 
+                            @Html.ActionLink("Add To Cart", "OrderingItem", "Cart", new { id = item.inventoryid }, null)
                         </td>
                     </tr>
                 }
 
             </table>
+
         }
 
     </div>
